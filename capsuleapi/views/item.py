@@ -61,16 +61,16 @@ class ItemView(ViewSet):
         """
         item = Item.objects.get(pk=pk)
         user = CapsuleUser.objects.get(pk=request.data["userId"])
-        item.user_id=user
+        item.user_id = user
         category = Category.objects.get(pk=request.data["categoryId"])
-        item.category_id=category
-        item.photo_url=request.data["photoUrl"]
-        item.name=request.data["name"]
+        item.category_id = category
+        item.photo_url = request.data["photoUrl"]
+        item.name = request.data["name"]
 
         item.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    
+
     def destroy(self, request, pk):
         """Handles DELETE requests for an item
 
@@ -80,7 +80,6 @@ class ItemView(ViewSet):
         item = Item.objects.get(pk=pk)
         item.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-
 
 
 class ItemSerializer(serializers.ModelSerializer):

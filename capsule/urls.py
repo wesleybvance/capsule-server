@@ -14,8 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from capsuleapi.views.auth import check_user, register_user
+from django.urls import path, include
+from rest_framework import routers
+from capsuleapi.views import CategoryView, ItemView, CapsuleUserView, OutfitItemView, OutfitView
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'capsule_users', CapsuleUserView, 'capsule_user')
+router.register(r'categories', CategoryView, 'category')
+router.register(r'items', ItemView, 'item')
+router.register(r'outfit_items', OutfitItemView, 'outfit_item')
+router.register(r'outfits', OutfitView, 'outfit')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('register', register_user),
+    path('checkuser', check_user),
+
 ]
