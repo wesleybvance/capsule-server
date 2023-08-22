@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
-from capsuleapi.models import Item, Outfit
+from capsuleapi.models import Item, Outfit, CapsuleUser, Category
 
 
 class ItemView(ViewSet):
@@ -35,6 +35,42 @@ class ItemView(ViewSet):
                 items = items.filter(user_id=uid)
         serializer = ItemSerializer(items, many=True)
         return Response(serializer.data)
+
+    def create(self, request):
+        """Handles POST operations
+
+        Returns:
+            Response -- JSON serialized item instance
+        """
+        category = Category.objects.get(pk=request.data["categoryId"])
+        user = CapsuleUser.objects.get(pk=request.data["uid"])
+        item = Item.objects.create(
+            category_id=category,
+            user_id=user,
+            photo_url=request.data["photoUrl"],
+            name=request.data["name"],
+        )
+        serializer = ItemSerializer(item)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handles PUT requests for an item
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        item = Item.objects.get(pk=pk)
+        user = CapsuleUser.objects.get(pk=request.data["userId"])
+        item.user_id=user
+        category = Category.objects.get(pk=request.data["categoryId"])
+        item.category_id=category
+        item.photo_url=request.data["photoUrl"]
+        item.name=request.data["name"]
+
+        item.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 
 
 class ItemSerializer(serializers.ModelSerializer):
