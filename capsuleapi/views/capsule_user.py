@@ -15,7 +15,7 @@ class CapsuleUserView(ViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        """POST request to create a CapsuleUser"""
+        """POST request to create a Capsule User"""
         uid = request.META["HTTP_AUTHORIZATION"]
 
         capsuleuser = CapsuleUser(
