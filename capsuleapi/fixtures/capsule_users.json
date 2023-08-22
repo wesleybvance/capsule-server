@@ -1,0 +1,12 @@
+[
+  {
+      "model": "capsuleapi.capsuleuser",
+      "pk": 1,
+      "fields": {
+          "first_name": "Cher",
+          "last_name": "Horowitz",
+          "email": "cher@gmail.com",
+          "profile_image": "https://i.pinimg.com/736x/d9/2d/ca/d92dca741826aaf6048128c35e000830.jpg"
+      }
+  }
+]
