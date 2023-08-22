@@ -1,0 +1,37 @@
+[
+  {
+      "model": "capsuleapi.category",
+      "pk": 1,
+      "fields": {
+          "name": "Tops"
+      }
+  },
+  {
+      "model": "capsuleapi.category",
+      "pk": 2,
+      "fields": {
+          "name": "Bottoms"
+      }
+  },
+  {
+      "model": "capsuleapi.category",
+      "pk": 3,
+      "fields": {
+          "name": "Dress"
+      }
+  },
+  {
+      "model": "capsuleapi.category",
+      "pk": 4,
+      "fields": {
+          "name": "Shoes"
+      }
+  },
+  {
+      "model": "capsuleapi.category",
+      "pk": 5,
+      "fields": {
+          "name": "Accessories"
+      }
+  }
+]
