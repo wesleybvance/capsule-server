@@ -1,0 +1,18 @@
+[
+  {
+    "model": "capsuleapi.outfit",
+    "pk": 1,
+    "fields": {
+      "name": "Red Plaid Outfit for School",
+      "user_id": 1
+    }
+  },
+  {
+    "model": "capsuleapi.outfit",
+    "pk": 2,
+    "fields": {
+      "name": "Red Party Dress Outfit",
+      "user_id": 1
+    }
+  }
+]
