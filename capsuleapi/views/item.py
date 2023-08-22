@@ -70,6 +70,16 @@ class ItemView(ViewSet):
         item.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+    def destroy(self, request, pk):
+        """Handles DELETE requests for an item
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        item = Item.objects.get(pk=pk)
+        item.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 
