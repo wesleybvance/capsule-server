@@ -1,0 +1,58 @@
+[
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 1,
+    "fields": {
+      "item_id": 1,
+      "outfit_id": 1
+    }
+  },
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 2,
+    "fields": {
+      "item_id": 2,
+      "outfit_id": 1
+    }
+  },
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 3,
+    "fields": {
+      "item_id": 3,
+      "outfit_id": 1
+    }
+  },
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 4,
+    "fields": {
+      "item_id": 7,
+      "outfit_id": 1
+    }
+  },
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 5,
+    "fields": {
+      "item_id": 4,
+      "outfit_id": 2
+    }
+  },
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 6,
+    "fields": {
+      "item_id": 5,
+      "outfit_id": 2
+    }
+  },
+  {
+    "model": "capsuleapi.outfititem",
+    "pk": 7,
+    "fields": {
+      "item_id": 6,
+      "outfit_id": 2
+    }
+  }
+]
