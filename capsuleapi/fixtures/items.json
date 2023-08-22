@@ -1,0 +1,72 @@
+[
+  {
+    "model": "capsuleapi.item",
+    "pk": 1,
+    "fields": {
+      "name": "Red Plaid Blazer",
+      "user_id": 1,
+      "category_id": 1,
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-1RCuNwKqqwHGpQAmQRBGcTVPj9tOLnmAQ&usqp=CAU"
+    }
+  },
+  {
+    "model": "capsuleapi.item",
+    "pk": 2,
+    "fields": {
+      "name": "Red Plaid Skirt",
+      "user_id": 1,
+      "category_id": 2,
+      "photo_url": "https://www.porees.com/cdn/shop/products/Plaid_37_Skirt_grande.jpg?v=1589252585"
+    }
+  },
+  {
+    "model": "capsuleapi.item",
+    "pk": 3,
+    "fields": {
+      "name": "Black Beret",
+      "user_id": 1,
+      "category_id": 5,
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe0nQEObjES_QjvHGZGLuYj-UvxQNahz0a5GhWJzDCJgeddYw9VQlhZuZbRxjyowLdgdk&usqp=CAU"
+    }
+  },
+  {
+    "model": "capsuleapi.item",
+    "pk": 4,
+    "fields": {
+      "name": "Red Dress",
+      "user_id": 1,
+      "category_id": 3,
+      "photo_url": "https://img.ltwebstatic.com/images3_pi/2022/03/25/16481756316cfd98a171b5c2dc558a890092d7815a_thumbnail_600x.webp"
+    }
+  },
+  {
+    "model": "capsuleapi.item",
+    "pk": 5,
+    "fields": {
+      "name": "Red Open-Toed Heels",
+      "user_id": 1,
+      "category_id": 4,
+      "photo_url": "https://www.lulus.com/images/product/xlarge/5889330_553282.jpg?w=415&hdpi=1"
+    }
+  },
+  {
+    "model": "capsuleapi.item",
+    "pk": 6,
+    "fields": {
+      "name": "Red Feather Boa",
+      "user_id": 1,
+      "category_id": 5,
+      "photo_url": "https://media.istockphoto.com/id/1221391240/photo/teenagers.jpg?s=612x612&w=0&k=20&c=8AdS2YSF-pxrkrJ6B3zMJPTMNHxOI2F1hyAKAhMmcEw="
+    }
+  },
+  {
+    "model": "capsuleapi.item",
+    "pk": 7,
+    "fields": {
+      "name": "Black Oval Sunglasses",
+      "user_id": 1,
+      "category_id": 5,
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYs9my5-Cd7o7uqkVOUvpsjO1CWeALWz3_Xg&usqp=CAU"
+    }
+  }
+]
