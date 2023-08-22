@@ -5,6 +5,7 @@ from rest_framework import serializers, status
 from rest_framework.decorators import action
 from capsuleapi.models import Item, Outfit
 
+
 class ItemView(ViewSet):
     """Capsule Item view"""
 
@@ -16,6 +17,23 @@ class ItemView(ViewSet):
         """
         item = Item.objects.get(pk=pk)
         serializer = ItemSerializer(item)
+        return Response(serializer.data)
+
+    def list(self, request):
+        """Gets all items
+
+        Returns:
+            Response -- JSON serialized list of items
+        """
+        items = Item.objects.all()
+        uid = request.query_params.get('uid', None)
+        category = request.query_params.get('category', None)
+        if uid is not None:
+            if category is not None:
+                items = items.filter(user_id=uid, category_id=category)
+            else:
+                items = items.filter(user_id=uid)
+        serializer = ItemSerializer(items, many=True)
         return Response(serializer.data)
 
 
