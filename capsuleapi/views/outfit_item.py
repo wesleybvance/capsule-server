@@ -1,8 +1,6 @@
-from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rest_framework.decorators import action
 from capsuleapi.models import Item, Outfit, OutfitItem
 
 
@@ -28,7 +26,7 @@ class OutfitItemView(ViewSet):
         outfit_items = OutfitItem.objects.all()
         outfit = request.query_params.get('outfitId', None)
         if outfit is not None:
-            outfits_items = outfits_items.filter(outfit_id=outfit)
+            outfit_items = outfit_items.filter(outfit_id=outfit)
         serializer = OutfitItemSerializer(outfit_items, many=True)
         return Response(serializer.data)
 
@@ -77,5 +75,5 @@ class OutfitItemView(ViewSet):
 class OutfitItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OutfitItem
-        fields = ('outfit_id', 'item_id')
+        fields = ('id', 'outfit_id', 'item_id')
         depth = 2
