@@ -1,7 +1,6 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework import serializers
 from rest_framework.response import Response
-from rest_framework.decorators import action
 from rest_framework import status
 from capsuleapi.models import CapsuleUser
 
@@ -19,6 +18,7 @@ class CapsuleUserView(ViewSet):
         uid = request.META["HTTP_AUTHORIZATION"]
 
         capsuleuser = CapsuleUser(
+            # uid=request.data['uid'],
             uid=uid,
             first_name=request.data['firstName'],
             last_name=request.data['lastName'],
