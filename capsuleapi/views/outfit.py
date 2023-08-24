@@ -75,5 +75,5 @@ class OutfitView(ViewSet):
 class OutfitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Outfit
-        fields = ('name', 'user_id')
+        fields = ('id', 'name', 'user_id')
         depth = 1
