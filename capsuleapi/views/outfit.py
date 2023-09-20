@@ -1,4 +1,5 @@
 from django.http import HttpResponseServerError
+from django.db.models import Q
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
@@ -27,8 +28,13 @@ class OutfitView(ViewSet):
         """
         outfits = Outfit.objects.all()
         user = request.query_params.get('uid', None)
+        search_text = self.request.query_params.get('q', None)
         if user is not None:
             outfits = outfits.filter(user_id=user)
+        if search_text is not None:
+            outfits = outfits.filter(
+                Q(name__contains=search_text)
+            )
         serializer = OutfitSerializer(outfits, many=True)
         return Response(serializer.data)
 
