@@ -25,6 +25,7 @@ class OutfitItemView(ViewSet):
         """
         outfit_items = OutfitItem.objects.all()
         outfit = request.query_params.get('outfitId', None)
+        
         if outfit is not None:
             outfit_items = outfit_items.filter(outfit_id=outfit)
         serializer = OutfitItemSerializer(outfit_items, many=True)
