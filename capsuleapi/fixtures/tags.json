@@ -1,0 +1,18 @@
+[
+  {
+    "model": "capsuleapi.tag",
+    "pk": 1,
+    "fields": {
+      "name": "Beach",
+      "user_id": 2
+    }
+  },
+  {
+    "model": "capsuleapi.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Summer",
+      "user_id": 2
+    }
+  }
+]

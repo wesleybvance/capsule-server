@@ -1,0 +1,34 @@
+[
+  {
+    "model": "capsuleapi.outfittag",
+    "pk": 1,
+    "fields": {
+      "tag_id": 1,
+      "outfit_id": 21
+    }
+  },
+  {
+    "model": "capsuleapi.outfittag",
+    "pk": 2,
+    "fields": {
+      "tag_id": 2,
+      "outfit_id": 21
+    }
+  },
+  {
+    "model": "capsuleapi.outfittag",
+    "pk": 1,
+    "fields": {
+      "tag_id": 2,
+      "outfit_id": 41
+    }
+  },
+  {
+    "model": "capsuleapi.outfittag",
+    "pk": 2,
+    "fields": {
+      "tag_id": 2,
+      "outfit_id": 45
+    }
+  }
+]
