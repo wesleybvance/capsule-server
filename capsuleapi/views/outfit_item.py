@@ -11,7 +11,7 @@ class OutfitItemView(ViewSet):
         """Gets an outfit_item by its pk
 
         Returns:
-            Response --  single JSON serialized outfit dictionary
+            Response --  single JSON serialized outfit_item dictionary
         """
         outfit_item = OutfitItem.objects.get(pk=pk)
         serializer = OutfitItemSerializer(outfit_item)
