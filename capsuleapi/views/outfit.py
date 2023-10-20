@@ -1,10 +1,10 @@
-from django.http import HttpResponseServerError
+# from django.http import HttpResponseServerError
 from django.db.models import Q
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rest_framework.decorators import action
-from capsuleapi.models import Item, Outfit, CapsuleUser, Category
+# from rest_framework.decorators import action
+from capsuleapi.models import Item, Outfit, CapsuleUser, Category, Tag, OutfitTag
 
 
 class OutfitView(ViewSet):
@@ -29,6 +29,16 @@ class OutfitView(ViewSet):
         outfits = Outfit.objects.all()
         user = request.query_params.get('uid', None)
         search_text = self.request.query_params.get('q', None)
+        tag_id = request.query_params.get('tagId', None)
+
+        if tag_id is not None:
+            outfits = outfits.filter(outfit__tag_id=tag_id)
+            # otags = outfit_tags.filter(tag_id=tag_id)
+            # for otag in otags:
+            #     outfit = Outfit.objects.get(pk=otag.outfit_id)
+            #     tag_outfits.append(outfit)
+            # outfits = tag_outfits
+            # print(tag_outfits)
         if user is not None:
             outfits = outfits.filter(user_id=user)
         if search_text is not None:
