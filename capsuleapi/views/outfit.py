@@ -3,8 +3,10 @@ from django.db.models import Q
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+
 # from rest_framework.decorators import action
-from capsuleapi.models import Item, Outfit, CapsuleUser, Category, Tag, OutfitTag
+from capsuleapi.models import Outfit, CapsuleUser, Tag, OutfitTag
+from capsuleapi.views import OutfitTagSerializer
 
 
 class OutfitView(ViewSet):
@@ -27,12 +29,12 @@ class OutfitView(ViewSet):
             Response -- JSON serialized list of outfits
         """
         outfits = Outfit.objects.all()
-        user = request.query_params.get('uid', None)
-        search_text = self.request.query_params.get('q', None)
-        tag_id = request.query_params.get('tagId', None)
+        user = request.query_params.get("uid", None)
+        search_text = self.request.query_params.get("q", None)
+        tag_id = request.query_params.get("tagId", None)
 
         if tag_id is not None:
-            outfits = outfits.filter(outfit__tag_id=tag_id)
+            outfits = outfits.filter(outfit_tag_id=tag_id)
             # otags = outfit_tags.filter(tag_id=tag_id)
             # for otag in otags:
             #     outfit = Outfit.objects.get(pk=otag.outfit_id)
@@ -42,9 +44,7 @@ class OutfitView(ViewSet):
         if user is not None:
             outfits = outfits.filter(user_id=user)
         if search_text is not None:
-            outfits = outfits.filter(
-                Q(name__contains=search_text)
-            )
+            outfits = outfits.filter(Q(name__contains=search_text))
         serializer = OutfitSerializer(outfits, many=True)
         return Response(serializer.data)
 
@@ -87,9 +87,25 @@ class OutfitView(ViewSet):
         outfit.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+    @action(detail=True, methods=["POST"])
+    def create_tag(self, request, pk):
+        """Handles POST operation to create a new Tag and OutfitTag"""
+        user = CapsuleUser.objects.get(pk=request.data["userId"])
+        outfit = Outfit.objects.get(pk=pk)
+        tag_name = request.data["tagName"]
+        tag = Tag.objects.create(name=tag_name, user_id=user)
+        outfit_tag = OutfitTag.objects.create(outfit=outfit, tag=tag)
+        serializer = OutfitTagSerializer(outfit_tag)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=["POST"])
+    def remove_tag(self, request, pk):
+        outfit_tag = OutfitTag.objects.get(pk=pk)
+        outfit_tag.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class OutfitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Outfit
-        fields = ('id', 'name', 'user_id')
+        fields = ("id", "name", "user_id")
         depth = 1
