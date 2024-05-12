@@ -17,7 +17,7 @@ from django.contrib import admin
 from rest_framework import routers
 from django.urls import path, include
 from capsuleapi.views.auth import check_user, register_user
-from capsuleapi.views import CategoryView, ItemView, CapsuleUserView, OutfitItemView, OutfitView
+from capsuleapi.views import CategoryView, ItemView, CapsuleUserView, OutfitItemView, OutfitView, TagView, OutfitTagView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'capsule_users', CapsuleUserView, 'capsule_user')
@@ -25,6 +25,8 @@ router.register(r'categories', CategoryView, 'category')
 router.register(r'items', ItemView, 'item')
 router.register(r'outfit_items', OutfitItemView, 'outfit_item')
 router.register(r'outfits', OutfitView, 'outfit')
+router.register(r'tags', TagView, 'tag')
+router.register(r'outfit_tags', OutfitTagView, 'outfit_tag')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
